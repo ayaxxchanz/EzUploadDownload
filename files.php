@@ -55,7 +55,7 @@
 									<td data-label="Artist"><?php echo $file['artist']; ?></td>
 									<td data-label="Song"><?php echo $file['song']; ?></td>
 									<td data-label="Downloads"><?php echo $file['downloads']; ?></td>
-									<td data-label="Action"><a href="files.php?file_id=<?php echo $file['id'] ?>" class="btn btn-dark"><i class="fa fa-download" aria-hidden="true"></i> </a>&nbsp;<a href="javascript:deleteid('<?php echo $file['id'] ?>')" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i> </a></td>
+									<td data-label="Action"><a href="files.php?file_id=<?php echo $file['id'] ?>" class="btn btn-dark"><i class="fa fa-download" aria-hidden="true"></i> </a>&nbsp;<a href="#confirm" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i> </a></td>
 								</tr>
 							<?php endforeach;?>
 							</tbody>
@@ -75,15 +75,25 @@
 		});
 	</script>
 
-	<!-- Confirm Deletion -->
-	<script type="text/javascript">
-		function deleteid(id)
-		{
-			if(confirm('Sure to delete this file?'))
-			{
-				window.location.href='files.php?delete_id='+id;
-			}
-		}
 	</script>
+	<!-- Modal Confirm HTML -->
+	<div id="confirm" class="modal fade">
+		<div class="modal-dialog modal-confirm">
+			<div class="modal-content">
+				<div class="modal-header" style="background: #eea236;">
+					<div class="icon-box">
+						<i class="material-icons">priority_high</i>
+					</div>
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				</div>
+				<div class="modal-body text-center">
+					<h4>Confirm?</h4>	
+					<p>Are you sure you want to delete this?<br>This process can't be undone.</p>
+					<button class="btn btn-danger" data-dismiss="modal"><span>Cancel</span></button>&nbsp;
+					<a href="files.php?delete_id=<?php echo $file['id'] ?>"><button class="btn btn-dark"><span>Confirm</span></button></a>
+				</div>
+			</div>
+		</div>
+	</div>    
 </body>
 </html>
