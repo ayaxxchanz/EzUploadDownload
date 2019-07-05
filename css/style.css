@@ -43,16 +43,10 @@
   	width: 100%;
   	padding: 15px;
  	margin-top: 20px;
-  	background-color: #3e3f42;
   	border: 0;
   	cursor: pointer;
   	font-weight: bold;
-  	color: #ffffff;
-  	transition: background-color 0.2s;
 }
-.login form input[type="submit"]:hover {
-	background-color: #444444;
-  	transition: background-color 0.2s;
 }.navtop {
 	background-color: #2f3947;
 	height: 60px;
