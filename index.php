@@ -12,7 +12,8 @@ if (isset($_SESSION['loggedin'])) {
 	<head>
 		<meta charset="utf-8">
 		<title>Login</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
@@ -27,7 +28,7 @@ if (isset($_SESSION['loggedin'])) {
 					<i class="fa fa-lock"></i>
 				</label>
 				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" value="Login">
+				<input type="submit" class="btn btn-dark" value="Login">
 			</form>
 		</div>
 	</body>
