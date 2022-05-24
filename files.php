@@ -40,10 +40,10 @@
 					<div class="table-responsive">
 						<table class="table table-striped table-bordered">
 							<thead class="thead-dark">
-								<th scope="col" width="30%">Filename</th>
+								<th scope="col" width="20%">Filename</th>
 								<th scope="col">Size</th>
-								<th scope="col">Artist</th>
-								<th scope="col">Song</th>
+								<th scope="col">Category</th>
+								<th scope="col">Description</th>
 								<th scope="col">Downloads</th>
 								<th scope="col">Action</th>
 							</thead>
@@ -52,13 +52,12 @@
 								<tr>
 									<td data-label="Filename"><?php echo $file['name']; ?></td>
 									<td data-label="Size"><?php echo floor($file['size'] / 1000) . ' KB'; ?></td>
-									<td data-label="Artist"><?php echo $file['artist']; ?></td>
-									<td data-label="Song"><?php echo $file['song']; ?></td>
+									<td data-label="Category"><?php echo $file['category']; ?></td>
+									<td data-label="Description"><?php echo $file['description']; ?></td>
 									<td data-label="Downloads"><?php echo $file['downloads']; ?></td>
-									<td data-label="Action"><a href="files.php?file_id=<?php echo $file['id'] ?>" class="btn btn-dark"><i class="fa fa-download" aria-hidden="true"></i> </a>&nbsp;<a href="#confirm" class="btn btn-danger" data-toggle="modal"><i class="fa fa-trash-o" aria-hidden="true"></i> </a></td>
+									<td data-label="Action"><a href="files.php?file_id=<?php echo $file['id'] ?>" class="btn btn-dark"><i class="fa fa-download" aria-hidden="true"></i> </a>&nbsp;<a href="files.php?delete_id=<?php echo $file['id'] ?>" class="btn btn-danger" d><i class="fa fa-trash-o" aria-hidden="true"></i> </a></td>
 								</tr>
 							<?php endforeach;?>
-							</tbody>
 						</table>
 					</div>
 				</div>
@@ -75,7 +74,7 @@
 		});
 	</script>
 
-	</script>
+	
 	<!-- Modal Confirm HTML -->
 	<div id="confirm" class="modal fade">
 		<div class="modal-dialog modal-confirm">
