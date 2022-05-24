@@ -41,18 +41,17 @@
 					<div class="col">
 						<form action="upload.php" method="post" enctype="multipart/form-data" style="max-width:525px">
 							<h5>Upload File</h5>
-							<p>.mp3 or .m4a only.</p>
+							<p>Only <span style="color:red">.doc, .docx, .pdf, .ppt, .pptx, .txt, .xls, .xlsx, .xps</span> are accepted. <br>File size must be less than <span style="color:red">5 MB</span>.</p>
 								<input type="file" name="myfile" required> <br>
 							
-							<br><h5>Artist</h5>
-								<select class="form-control" name="artist" required>
-									<option>ONE OK ROCK</option>
-									<option>Muse</option>
-									<option>Maksim</option>
+							<br><h5>Category</h5>
+								<select class="form-control" name="category" required>
+									<option>Personal</option>
+									<option>Work</option>
 								</select>
 
-							<br><h5>Song Name</h5>
-								<input class="form-control" type="text" name="song" required><br>
+							<br><h5>Description</h5>
+								<textarea class="form-control" name="description" rows=11 cols=50 maxlength=250 required ></textarea><br>
 
 							<br><button type="submit" name="save" class="btn btn-dark btn-block">Upload</button>
 						</form>
@@ -114,7 +113,7 @@
 				</div>
 				<div class="modal-body text-center">
 					<h4>Failed to upload!</h4>	
-					<p>Your file must not be larger than 20 MB and only in .mp3 or m4a extension. Please try again.</p>
+					<p>Please make sure your file is supported and not larger than 5 MB.</p>
 					<button class="btn btn-dark" data-dismiss="modal"><span>I understand.</span></button>
 				</div>
 			</div>

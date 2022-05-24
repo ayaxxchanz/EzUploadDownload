@@ -9,7 +9,7 @@ if (!isset($_SESSION['loggedin'])) {
 ?>
 <?php
 // connect to database
-$conn = mysqli_connect('localhost', 'root', '', 'music-upload');
+$conn = mysqli_connect('localhost', 'root', '', 'filestorage');
 
 $sql = "SELECT * FROM files";
 $result = mysqli_query($conn, $sql);
@@ -19,8 +19,8 @@ $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
 if (isset($_POST['save'])) { // if save button on the form is clicked
     // name of the uploaded file
     $filename = $_FILES['myfile']['name'];
-    $artist = $_POST['artist'];
-    $song = $_POST['song'];
+    $category = $_POST['category'];
+    $description = $_POST['description'];
 
     // destination of the file on the server
     $destination = 'uploads/' . $filename;
@@ -32,14 +32,14 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
     $file = $_FILES['myfile']['tmp_name'];
     $size = $_FILES['myfile']['size'];
 	
-    if (!in_array($extension, ['mp3','m4a'])) {
+    if (!in_array($extension, ['doc','docx','pdf','ppt','pptx','txt','xls','xlsx','xps'])) {
 		header('Location: upload.php#failed');
-    } elseif ($_FILES['myfile']['size'] > 20000000) { // file shouldn't be larger than 20Megabyte
+    } elseif ($_FILES['myfile']['size'] > 5000000) { // file shouldn't be larger than 5 Megabyte
         header('Location: upload.php#failed');
     } else {
         // move the uploaded (temporary) file to the specified destination
         if (move_uploaded_file($file, $destination)) {
-            $sql = "INSERT INTO files (name, size, artist, song, downloads) VALUES ('$filename', $size, '$artist', '$song', 0)";
+            $sql = "INSERT INTO files (name, size, category, description, downloads) VALUES ('$filename', $size, '$category', '$description', 0)";
             if (mysqli_query($conn, $sql)) {
 				header('Location: upload.php#success');
             }
@@ -86,6 +86,7 @@ if(isset($_GET['delete_id']))
 	
     $sql = "SELECT * FROM files WHERE id=$id";
     $result = mysqli_query($conn, $sql);
+    
     $row = mysqli_fetch_assoc($result);
 	unlink("uploads/".$row['name']);
 	
